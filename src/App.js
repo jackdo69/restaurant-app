@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 // import { Switch, Route, Redirect } from 'react-router-dom';
 // import Auth from './containers/Auth/Auth';
-// import Slider from './containers/Slider/Slider';
+import Slider from './containers/Slider/Slider';
 // import Order from './containers/Order/Order';
 // import Booking from './containers/Booking/Booking';
 
@@ -24,6 +24,7 @@ class App extends Component {
             <div>
                 <Layout>
                     {/* {routes} */}
+                <Slider />
                 </Layout>
             </div>
         );
