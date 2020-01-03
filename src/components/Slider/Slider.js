@@ -6,6 +6,7 @@ import beefNoodle from '../../assets/img/beef-noodle.jpg'
 import friedRice from '../../assets/img/fried-rice.jpg'
 import springRoll from '../../assets/img/spring-roll.jpg'
 import summerRoll from '../../assets/img/summer-roll.jpg'
+import classes from './Slider.module.css';
 
 class SlideView extends React.Component {
     render() {
@@ -13,12 +14,13 @@ class SlideView extends React.Component {
         dots: true,
         infinite: true,
         autoplay: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1
       };
       return (
-        <Slider {...settings}>
+        <Slider className={classes.Slider}
+        {...settings}>
           <div>
             <img src={beefNoodle} alt="beefNoodle" />
           </div>

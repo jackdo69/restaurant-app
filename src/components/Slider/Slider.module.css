@@ -1,0 +1,11 @@
+.Slider {
+    border: 1px solid #eee;
+    width: 100%;
+    
+}
+
+.Slider div img {
+    margin: 0 auto;
+    background-size: cover;
+    height: 450px;
+}
