@@ -3,13 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter} from 'react-router-dom';
 
+//importing for react-router-dom
+import { BrowserRouter } from 'react-router-dom';
 
+//importing for react-redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import foodReducer from './store/reducers/foods';
+
+const store = createStore(foodReducer);
 const app = (
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
 )
 
 

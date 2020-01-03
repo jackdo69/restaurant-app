@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
+//use for react-router-dom
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import Slider from './components/Slider/Slider';
