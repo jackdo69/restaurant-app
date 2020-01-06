@@ -12,7 +12,7 @@ class OrderControls extends Component {
                     <OrderControl
                         key={food.id}
                         name={food.name}
-                        add={() => this.props.onAddFood(food.id, food.name)} />
+                        add={() => this.props.onAddFood(food.name, food.price)} />
 
                 ))}
             </div>
@@ -29,11 +29,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddFood: (id, name) => dispatch({
+        onAddFood: (name, price) => dispatch({
             type:actionTypes.ADD_FOOD,
             foodData: {
                 name: name,
-                id: id
+                price: price
             }
         })
     }

@@ -8,8 +8,9 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_FOOD:
             const newFood = {
-                id: action.foodData.id,
-                name: action.foodData.name
+                id: Math.random().toFixed(2)*100,
+                name: action.foodData.name,
+                price: action.foodData.price
             }
             return {
                 ...state,
@@ -17,7 +18,10 @@ const reducer = (state = initialState, action) => {
             }
         
         case actionTypes.REMOVE_FOOD:
-            return {}
+            return {
+                ...state,
+                foods: state.foods.filter(food => food.id!==action.index)
+            }
     }
     return state
 }

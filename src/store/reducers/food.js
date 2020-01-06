@@ -4,12 +4,14 @@ const initialState = {
         {
             id: 1,
             name: 'Beef Noodle soup',
-            description: 'Northern style hot noodle soup with broth and sliced beef'
+            description: 'Northern style hot noodle soup with broth and sliced beef',
+            price: 11.9
         },
         {
             id: 2,
             name: 'Spring roll',
-            description: 'A delicate entry of fried spring roll'
+            description: 'A delicate entry of fried spring roll',
+            price: 7.9
         }
     ]
 }
