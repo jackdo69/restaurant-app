@@ -20,7 +20,7 @@ class Menu extends Component {
 
 const mapStateToProps = state => {
     return {
-        foods: state.foods
+        foods: state.food.foods
     }
 }
 

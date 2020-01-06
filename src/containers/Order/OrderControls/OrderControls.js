@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import OrderControl from './OrderControl/OrderControl';
+import * as actionTypes from '../../../store/actions'
 
 class OrderControls extends Component {
     
     render() {
         return (
-            <div>{this.props.foods}</div>
+            <div>
+                {this.props.foods.map(food => (
+                    <OrderControl
+                        key={food.id}
+                        name={food.name}
+                        add={() => this.props.onAddFood(food.id, food.name)} />
+
+                ))}
+            </div>
         );
     }
 
@@ -13,8 +23,20 @@ class OrderControls extends Component {
 
 const mapStateToProps = state => {
     return {
-        foods: state.foods
+        foods: state.food.foods
     }
 }
 
-export default connect(mapStateToProps, null)(OrderControls);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddFood: (id, name) => dispatch({
+            type:actionTypes.ADD_FOOD,
+            foodData: {
+                name: name,
+                id: id
+            }
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderControls);

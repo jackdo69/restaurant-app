@@ -9,10 +9,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 //importing for react-redux
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { createStore, combineReducers } from 'redux';
+import food from './store/reducers/food';
+import order from './store/reducers/order'
 
-const store = createStore(reducer);
+
+const rootReducer = combineReducers({
+    food: food,
+    order: order
+})
+const store = createStore(rootReducer);
 const app = (
     <Provider store={store}>
         <BrowserRouter>
