@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const OrderControls = () => {
-    return (
-        <h2>OrderControls</h2>
-    );
+class OrderControls extends Component {
+    
+    render() {
+        return (
+            <div>{this.props.foods}</div>
+        );
+    }
+
 }
 
 const mapStateToProps = state => {

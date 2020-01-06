@@ -10,9 +10,9 @@ import { BrowserRouter } from 'react-router-dom';
 //importing for react-redux
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import foodReducer from './store/reducers/foods';
+import reducer from './store/reducer';
 
-const store = createStore(foodReducer);
+const store = createStore(reducer);
 const app = (
     <Provider store={store}>
         <BrowserRouter>
