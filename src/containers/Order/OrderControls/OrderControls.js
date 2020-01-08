@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderControl from './OrderControl/OrderControl';
-import * as actionTypes from '../../../store/actions'
+import * as actionTypes from '../../../store/actions';
+import classes from './OrderControls.module.css'
 
 class OrderControls extends Component {
     
     render() {
         return (
-            <div>
+            <div className={classes.OrderControls}>
                 {this.props.foods.map(food => (
                     <OrderControl
                         key={food.id}
