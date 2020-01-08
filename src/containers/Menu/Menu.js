@@ -8,6 +8,7 @@ class Menu extends Component {
         return ( <div>
             {this.props.foods.map(food => (
                 <Food 
+                imgURL={food.imgURL}
                 key={food.id}
                 id={food.id}
                 name={food.name}

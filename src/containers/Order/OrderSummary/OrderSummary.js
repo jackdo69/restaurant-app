@@ -15,30 +15,25 @@ class OrderSummary extends Component {
                 <div>Please select from the list below</div>
             )
         } else {
-
             orderItem = (
                 <div className={classes.OrderSummary}>
                     {this.props.foods.map(food => {
-                        console.log(food.price);
-                        
                         totalPrice += food.price;
                         return (
                             <OrderSummaryItem
-                            key={food.id}
-                            name={food.name}
-                            price={food.price}
-                            remove={() => this.props.onRemoveFood(food.id)} />
+                                key={food.id}
+                                name={food.name}
+                                price={food.price}
+                                remove={() => this.props.onRemoveFood(food.id)} />
                         )
-                        
-        })}
-                    <div>Total price:$ {totalPrice}</div>
+                    })}
+                    <div>Total: $ {totalPrice}</div>
                 </div>
             )
         }
         return (
             <Aux>
                 {orderItem}
-
             </Aux>
 
         );
