@@ -1,0 +1,9 @@
+.Menu {
+    border: 1px silver;
+    background-color: snow;
+}
+
+.Food {
+    width: 80%;
+    margin: 20px auto;
+}
