@@ -10,16 +10,23 @@ import { BrowserRouter } from 'react-router-dom';
 
 //importing for react-redux
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import food from './store/reducers/food';
 import order from './store/reducers/order'
 
+//Apply middleware
+import thunk from 'redux-thunk';
+
+
+//hook up devtool
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     food: food,
     order: order
 })
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
 const app = (
     <Provider store={store}>
         <BrowserRouter>

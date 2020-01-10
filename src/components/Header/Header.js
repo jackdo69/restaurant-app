@@ -14,6 +14,9 @@ class Header extends Component {
                     <div className={classes.Link}>
                         <NavLink to="/order">order</NavLink>
                     </div>
+                    <div className={classes.Link}>
+                        <NavLink to="/booking">booking</NavLink>
+                    </div>
                 </div>
 
             </div>

@@ -28,6 +28,7 @@
 .LinkActive {display: inline-block;}
 
 .LinkActive a {
+    text-transform: uppercase;
     background-color: #e67e22;
     border: 1px solid #e67e22;
     color: #fff;
@@ -38,6 +39,7 @@
 }
 
 .Link a {
+    text-transform: uppercase;
     padding: 10px 30px;
     font-weight: 300px;
     text-decoration: none;
@@ -45,6 +47,7 @@
     border: 1px solid #e67e22;
     color: #e67e22;
     transition: background-color 0.3s, border 0.3s;
+    margin-right: 15px;
 }
 
 .Link a:hover {
