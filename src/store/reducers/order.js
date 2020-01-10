@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     foods: []
@@ -9,8 +9,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_FOOD:
             const newFood = {
                 id: Math.random().toFixed(2)*100,
-                name: action.foodData.name,
-                price: action.foodData.price
+                name: action.name,
+                price: action.price
             }
             return {
                 ...state,
