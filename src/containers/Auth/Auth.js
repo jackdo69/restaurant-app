@@ -77,7 +77,7 @@ class Auth extends Component {
         ))
         return (
             <div className={classes.Auth}>
-                {this.state.isSignup ? 'SIGN UP' : 'SIGN IN'}
+                {this.state.isSignup ? 'SIGN UP' : 'LOG IN'}
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <button
