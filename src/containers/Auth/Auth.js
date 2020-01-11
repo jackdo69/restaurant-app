@@ -24,7 +24,7 @@ class Auth extends Component {
                 value: ''
             }
         },
-        isSignup: true
+        isSignup: false
     }
 
     switchAuthModeHandler = () => {
@@ -84,7 +84,7 @@ class Auth extends Component {
                     onClick={this.submitHandler}>SUBMIT</button>
                 </form>
                 <button
-                    onClick={this.switchAuthModeHandler}>SWITCH MODE</button>
+                    onClick={this.switchAuthModeHandler}>Switch to {!this.state.isSignup ? 'Sign up' : 'Log in'}</button>
             </div>
         );
     }
