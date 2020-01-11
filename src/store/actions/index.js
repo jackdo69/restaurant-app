@@ -1,4 +1,10 @@
 export {
     addFood,
     removeFood
-} from './orderBuilder'
+} from './orderBuilder';
+
+export {
+    auth,
+    logout,
+    authCheckState
+} from './auth'
