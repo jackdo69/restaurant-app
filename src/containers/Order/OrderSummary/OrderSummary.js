@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderSummaryItem from './OrderSummaryItem/OrderSummaryItem';
-import * as orderBuilderActions from '../../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 import classes from './OrderSummary.module.css';
 import Aux from '../../../hoc/Aux/Aux';
 
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRemoveFood: (index) => dispatch(orderBuilderActions.removeFood(index))
+        onRemoveFood: (index) => dispatch(actions.removeFood(index))
     }
 }
 

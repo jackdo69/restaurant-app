@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OrderControl from './OrderControl/OrderControl';
 import classes from './OrderControls.module.css';
-import * as orderBuilderActions from '../../../store/actions/index'
+import * as actions from '../../../store/actions/index'
 
 class OrderControls extends Component {
     
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddFood: (name, price) => dispatch(orderBuilderActions.addFood(name, price))
+        onAddFood: (name, price) => dispatch(actions.addFood(name, price))
     }
 }
 
