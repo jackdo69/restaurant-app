@@ -3,6 +3,7 @@ import classes from './Auth.module.css';
 import Input from '../../components/Input/Input';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
+import {Redirect} from 'react-router-dom';
 
 class Auth extends Component {
     state = {
@@ -74,9 +75,16 @@ class Auth extends Component {
                 elementConfig={formElement.config.elementConfig}
                 value={formElement.config.value}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)} />
-        ))
+        ));
+
+        let authRedirect = null;
+        if (this.props.isAuthenticated) {
+            authRedirect = <Redirect to='/account' />
+        }
+
         return (
             <div className={classes.Auth}>
+                {authRedirect}
                 {this.state.isSignup ? 'SIGN UP' : 'LOG IN'}
                 <form onSubmit={this.submitHandler}>
                     {form}
@@ -96,4 +104,10 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
