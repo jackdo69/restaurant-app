@@ -7,6 +7,7 @@ import Order from './containers/Order/Order';
 import Booking from './containers/Booking/Booking';
 import Menu from './containers/Menu/Menu';
 import Header from './components/Header/Header';
+import Logout from './components/Logout/Logout';
 import Account from './containers/Account/Account';
 
 
@@ -16,6 +17,7 @@ class App extends Component {
 
         let routes = (
             <Switch>
+                <Route path="/logout" component={Logout} />
                 <Route path="/account" component={Account} />
                 <Route path="/auth" component={Auth} />
                 <Route path="/menu" component={Menu} />

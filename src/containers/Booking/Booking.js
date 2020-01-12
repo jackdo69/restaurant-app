@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import Aux from '../../hoc/Aux/Aux';
-import * as actions from '../../store/actions/index';
 
 class Booking extends Component {
 
@@ -16,8 +15,9 @@ class Booking extends Component {
             <Aux>
                 {authRedirect}
                 <h2>Booking</h2>
-                <button
-                    onClick={this.props.logout}>SIGN OUT</button>
+                
+                <NavLink
+                    to="/logout">SIGN OUT</NavLink>
             </Aux>
 
         );
@@ -32,10 +32,5 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        logout: () => dispatch(actions.logout())
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Booking);
+export default connect(mapStateToProps, null)(Booking);
