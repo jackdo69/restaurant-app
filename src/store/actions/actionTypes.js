@@ -3,6 +3,7 @@ export const REMOVE_FOOD = 'REMOVE_FOOD';
 
 export const ORDER_SUCCESS = 'ORDER_SUCCESS';
 export const ORDER_FAIL = 'ORDER_FAIL';
+export const FETCH_ORDER_SUCCESS = 'FETCH_ORDER_SUCCESS';
 
 
 export const AUTH_START = 'AUTH_START';

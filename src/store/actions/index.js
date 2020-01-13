@@ -1,8 +1,9 @@
 export {
     addFood,
     removeFood,
-    submitOrder
-} from './orderBuilder';
+    submitOrder,
+    fetchOrders
+} from './order';
 
 export {
     auth,

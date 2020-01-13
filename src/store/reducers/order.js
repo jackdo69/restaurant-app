@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    foods: []
+    foods: [],
+    orders: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +24,12 @@ const reducer = (state = initialState, action) => {
                 foods: state.foods.filter(food => food.id !== action.index)
             }
 
-        
+        case actionTypes.FETCH_ORDER_SUCCESS:
+            return {
+                ...state,
+                orders: action.orders
+            }
+
         default: return state
     }
 

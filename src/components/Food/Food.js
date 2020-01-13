@@ -4,8 +4,6 @@ import classes from './Food.module.css';
 
 class Food extends Component {
     render() {
-        console.log(this.props.imgURL);
-
         return (
             <div className={classes.Food}>
                 <div className={classes.item1}>
