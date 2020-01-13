@@ -40,7 +40,6 @@ const mapStateToProps = state => {
     return {
         authRedirectPath: state.auth.authRedirectPath,
         foods: state.order.foods,
-        token: state.auth.token,
         userId: state.auth.userId
     }
 }

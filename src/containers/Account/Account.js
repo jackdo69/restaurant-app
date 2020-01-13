@@ -15,6 +15,8 @@ class Account extends Component {
             <div className={classes.Account}>
                 {authRedirect}
                 <h2>Welcome back! {localStorage.getItem('userEmail')}</h2>
+                <p>Your orders:</p>
+                <hr />
                 <NavLink
                     to="/logout">SIGN OUT</NavLink>
             </div>

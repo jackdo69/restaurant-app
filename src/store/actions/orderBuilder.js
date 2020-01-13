@@ -30,7 +30,8 @@ export const orderFail = () => {
 
 export const submitOrder = (order) => {
     return dispatch =>{
-        axios.post('/orders.json', order)
+        let token = localStorage.getItem('token')
+        axios.post('/orders.json?auth=' + token, order)
         .then(res => {
             console.log(res);
             dispatch(orderSuccess())
@@ -40,5 +41,10 @@ export const submitOrder = (order) => {
             dispatch(orderFail())
         })
     }
-    
-};
+}
+
+// export const fetchOrders = (userId) => {
+//     return dispatch => {
+
+//     }
+// }
