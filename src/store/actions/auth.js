@@ -32,6 +32,8 @@ export const logout = () => {
     }
 }
 
+
+//logout the user after the expirationTime finish
 export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
@@ -72,6 +74,8 @@ export const auth = (email, password, isSignup) => {
 }
 
 
+
+//Check the auth state whenever reload the page
 export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.getItem('token');

@@ -1,6 +1,7 @@
 export {
     addFood,
-    removeFood
+    removeFood,
+    submitOrder
 } from './orderBuilder';
 
 export {

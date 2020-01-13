@@ -22,6 +22,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 foods: state.foods.filter(food => food.id !== action.index)
             }
+
+        
         default: return state
     }
 
