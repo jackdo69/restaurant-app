@@ -5,6 +5,7 @@ import Aux from '../../hoc/Aux/Aux';
 import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
+import classes from './Order.module.css';
 
 class Order extends Component {
 
@@ -24,13 +25,17 @@ class Order extends Component {
         }
         return (
             <Aux>
-                {authRedirect}
-                <OrderSummary />
-                <OrderControls />
-                <button
-                    onClick={this.orderHandler}>Place order</button>
-                <NavLink
-                    to="/logout">SIGN OUT</NavLink>
+                <div className={classes.Order}>
+                    <h2 align="center">Order Takeaway</h2>
+                    {authRedirect}
+                    <OrderSummary />
+                    <OrderControls />
+                    <button
+                        onClick={this.orderHandler}>Place order</button>
+                    <NavLink
+                        to="/logout">SIGN OUT</NavLink>
+                </div>
+
             </Aux>
         );
     }

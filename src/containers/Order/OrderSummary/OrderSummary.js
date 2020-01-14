@@ -12,7 +12,7 @@ class OrderSummary extends Component {
         let totalPrice = 0;
         if (this.props.foods.length === 0) {
             orderItem = (
-                <h2>Please select from the list below:</h2>
+                <p align="center">Please select from the list below:</p>
             )
         } else {
             orderItem = (

@@ -3,7 +3,7 @@ import classes from './OrderItem.module.css';
 
 class OrderItem extends Component {
     render() {
-        console.log(this.props.foods);
+        
         const foodOutputs = (this.props.foods.map(item => (
             <span
                 style={{

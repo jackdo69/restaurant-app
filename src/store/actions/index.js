@@ -6,7 +6,11 @@ export {
 } from './order';
 
 export {
+    submitBooking
+} from './booking';
+
+export {
     auth,
     logout,
     authCheckState
-} from './auth'
+} from './auth';

@@ -4,6 +4,7 @@ import { Redirect, NavLink } from 'react-router-dom';
 import Aux from '../../hoc/Aux/Aux';
 import Input from '../../components/Input/Input';
 import classes from './Booking.module.css';
+import * as actions from '../../store/actions/index';
 
 class Booking extends Component {
     state = {
@@ -22,7 +23,6 @@ class Booking extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'tel',
-                    pattern: '[0-9]{4}-[0-9]{2}-[0-9]{3}',
                     placeholder: 'Your phone number'
                 },
                 value: ''
@@ -80,7 +80,18 @@ class Booking extends Component {
         this.setState({bookingForm: updatedBookingForm})
     }
 
-    bookingHandler = (event) => { }
+    bookingHandler = (event) => {
+        event.preventDefault();
+        const bookingData = {};
+        for (let key in this.state.bookingForm) {
+            bookingData[key] = this.state.bookingForm[key]
+        }
+        const booking = {
+            booking: bookingData,
+            userId: this.props.userId
+        }
+        this.props.onSubmitBooking(booking)
+     }
 
     render() {
         let authRedirect = null;
@@ -98,8 +109,7 @@ class Booking extends Component {
         }
 
         let form = (
-            <form
-                onSubmit={this.bookingHdnler}>
+            <form>
                 {formElementsArray.map(formElement => (
 
                     <Input
@@ -111,7 +121,8 @@ class Booking extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
 
                 ))}
-                <button>Make booking</button>
+                <button
+                    onClick={this.bookingHandler}>Make booking</button>
             </form>
         )
 
@@ -135,9 +146,16 @@ class Booking extends Component {
 
 const mapStateToProps = state => {
     return {
-        authRedirectPath: state.auth.authRedirectPath
+        authRedirectPath: state.auth.authRedirectPath,
+        userId: state.auth.userId
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmitBooking: (bookingData) => dispatch(actions.submitBooking(bookingData))
     }
 }
 
 
-export default connect(mapStateToProps, null)(Booking);
+export default connect(mapStateToProps, mapDispatchToProps)(Booking);
