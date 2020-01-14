@@ -1,5 +1,16 @@
 .OrderSummary {
-    padding: 5px;
-    border: 1px solid rgb(218, 205, 205);
-    margin: 10px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+@media (min-width: 600px) {
+    .OrderSummary {
+        width: 500px;
+    }
 }

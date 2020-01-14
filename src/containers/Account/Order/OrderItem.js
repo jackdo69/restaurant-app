@@ -6,7 +6,13 @@ class OrderItem extends Component {
         console.log(this.props.foods);
         const foodOutputs = (this.props.foods.map(item => (
             <span
-                key={item.id}>{item.name} {item.price}</span>
+                style={{
+                    textTransform: 'capitalize',
+                    display: 'inline-block',
+                    margin: '0 8px',
+                    padding: '5px'
+                }}
+                key={item.id}>{item.name} ({item.price})</span>
         )))
         return (
             <div className={classes.OrderItem}>
