@@ -23,9 +23,19 @@
     letter-spacing: 1px;
 }
 
-.Link {display: inline-block;}
+.Link, .LinkActive{display: inline-block;}
 
-.LinkActive {display: inline-block;}
+
+@media only screen and (max-width: 906px) {
+    .Link, .LinkActive {
+        display: flex;
+    }
+
+    .Link a, .LinkActive a {
+        width: 140px;
+        margin-top: 20px;
+    }
+}
 
 .LinkActive a {
     text-transform: uppercase;

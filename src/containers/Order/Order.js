@@ -3,7 +3,7 @@ import OrderControls from './OrderControls/OrderControls';
 import OrderSummary from './OrderSummary/OrderSummary';
 import Aux from '../../hoc/Aux/Aux';
 import { connect } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import classes from './Order.module.css';
 
@@ -32,8 +32,6 @@ class Order extends Component {
                     <OrderControls />
                     <button
                         onClick={this.orderHandler}>Place order</button>
-                    <NavLink
-                        to="/logout">SIGN OUT</NavLink>
                 </div>
 
             </Aux>

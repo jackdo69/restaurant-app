@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Account.module.css';
 import { connect } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import OrderItem from './Order/OrderItem';
 import BookingItem from './Booking/BookingItem';
@@ -19,9 +19,6 @@ class Account extends Component {
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to="/auth" />
         }
-        console.log(this.props.orders);
-        console.log(this.props.bookings);
-        
         
         let orders = this.props.orders.map(order => (
             <OrderItem 
@@ -43,9 +40,7 @@ class Account extends Component {
                 {orders}
                 <p>Your booking:</p>
                 {bookings}
-                <hr />
-                <NavLink
-                    to="/logout">SIGN OUT</NavLink>
+                
             </div>
 
         );

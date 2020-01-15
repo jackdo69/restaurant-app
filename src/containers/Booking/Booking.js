@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import Aux from '../../hoc/Aux/Aux';
 import Input from '../../components/Input/Input';
 import classes from './Booking.module.css';
@@ -133,8 +133,6 @@ class Booking extends Component {
                     <h2>Make a reservation!</h2>
                     {form}
 
-                    <NavLink
-                        to="/logout">SIGN OUT</NavLink>
                 </div>
             </Aux>
 

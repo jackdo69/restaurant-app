@@ -3,7 +3,7 @@ import Layout from './hoc/Layout/Layout';
 //use for react-router-dom
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Auth from './containers/Auth/Auth';
+import Auth from './components/Auth/Auth';
 import Order from './containers/Order/Order';
 import Booking from './containers/Booking/Booking';
 import Menu from './containers/Menu/Menu';
