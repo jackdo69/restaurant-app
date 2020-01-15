@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import classes from './Order.module.css';
+import Button from '../../components/Button/Button'
 
 class Order extends Component {
 
@@ -30,8 +31,9 @@ class Order extends Component {
                     {authRedirect}
                     <OrderSummary />
                     <OrderControls />
-                    <button
-                        onClick={this.orderHandler}>Place order</button>
+                    <Button
+                        btnType='Success'
+                        click={this.orderHandler}>PLACE ORDER</Button>
                 </div>
 
             </Aux>

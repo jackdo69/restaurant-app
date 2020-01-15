@@ -3,7 +3,7 @@ import classes from './Input.module.css';
 
 const input = (props) => {
     let inputElement = null;
-    const inputClasses = [classes.inputElement];
+    const inputClasses = [classes.InputElement];
 
     switch (props.elementType) {
         case ('input'):

@@ -5,6 +5,7 @@ import Aux from '../../hoc/Aux/Aux';
 import Input from '../../components/Input/Input';
 import classes from './Booking.module.css';
 import * as actions from '../../store/actions/index';
+import Button from '../../components/Button/Button';
 
 class Booking extends Component {
     state = {
@@ -121,8 +122,9 @@ class Booking extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
 
                 ))}
-                <button
-                    onClick={this.bookingHandler}>Make booking</button>
+                <Button
+                    btnType='Success'
+                    click={this.bookingHandler}>MAKE BOOKING</Button>
             </form>
         )
 

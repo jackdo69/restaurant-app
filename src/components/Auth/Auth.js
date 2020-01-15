@@ -4,6 +4,7 @@ import Input from '../../components/Input/Input';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import {Redirect} from 'react-router-dom';
+import Button from '../Button/Button';
 
 class Auth extends Component {
     state = {
@@ -85,14 +86,17 @@ class Auth extends Component {
         return (
             <div className={classes.Auth}>
                 {authRedirect}
-                {this.state.isSignup ? 'SIGN UP' : 'LOG IN'}
+                <h2>{this.state.isSignup ? 'SIGN UP' : 'LOG IN'}</h2>
                 <form onSubmit={this.submitHandler}>
                     {form}
-                    <button
-                    onClick={this.submitHandler}>SUBMIT</button>
+                    <Button
+                    btnType='Success'
+                    onClick={this.submitHandler}>SUBMIT</Button>
                 </form>
-                <button
-                    onClick={this.switchAuthModeHandler}>Switch to {!this.state.isSignup ? 'Sign up' : 'Log in'}</button>
+                <Button
+                    btnType='Danger'
+                    click={this.switchAuthModeHandler}>
+                        Switch to {!this.state.isSignup ? 'Sign up' : 'Log in'}</Button>
             </div>
         );
     }
