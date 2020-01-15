@@ -14,6 +14,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import food from './store/reducers/food';
 import order from './store/reducers/order';
 import auth from './store/reducers/auth';
+import booking from './store/reducers/booking';
 
 //Apply middleware
 import thunk from 'redux-thunk';
@@ -25,7 +26,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     food: food,
     order: order,
-    auth: auth
+    auth: auth,
+    booking
 })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 

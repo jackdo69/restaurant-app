@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import OrderItem from './Order/OrderItem';
+import BookingItem from './Booking/BookingItem';
 
 class Account extends Component {
     
     componentDidMount() {
         this.props.onFetchOrders();
+        this.props.onFetchBookings();
     }
 
     render() {
@@ -17,11 +19,20 @@ class Account extends Component {
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to="/auth" />
         }
-
+        console.log(this.props.orders);
+        console.log(this.props.bookings);
+        
+        
         let orders = this.props.orders.map(order => (
             <OrderItem 
-                key={Math.random().toFixed(2) * 100}
+                key={this.props.orders.indexOf(order)}
                 foods={order.foods} />
+        ))
+
+        let bookings = this.props.bookings.map(booking => (
+            <BookingItem 
+                key={this.props.bookings.indexOf(booking)}
+                options={booking.booking}/>
         ))
 
         return (
@@ -30,6 +41,8 @@ class Account extends Component {
                 <h2>Welcome back! {localStorage.getItem('userEmail')}</h2>
                 <p>Your orders:</p>
                 {orders}
+                <p>Your booking:</p>
+                {bookings}
                 <hr />
                 <NavLink
                     to="/logout">SIGN OUT</NavLink>
@@ -41,13 +54,15 @@ class Account extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrders: () => dispatch(actions.fetchOrders())
+        onFetchOrders: () => dispatch(actions.fetchOrders()),
+        onFetchBookings: () => dispatch(actions.fetchBookings())
     }
 }
 
 const mapStateToProps = state => {
     return {
-        orders: state.order.orders
+        orders: state.order.orders,
+        bookings: state.booking.bookings
     }
 }
 

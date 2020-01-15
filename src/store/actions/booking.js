@@ -31,32 +31,32 @@ export const submitBooking = (booking) => {
     }
 }
 
-// export const fetchOrderSuccess = (orders) => {
-//     return {
-//         type:actionTypes.FETCH_BOOKING_SUCCESS,
-//         orders: orders
-//     }
-// }
+export const fetchBookingSuccess = (bookings) => {
+    return {
+        type:actionTypes.FETCH_BOOKING_SUCCESS,
+        bookings: bookings
+    }
+}
 
-// export const fetchOrders = () => {
-//     return dispatch => {
-//         let token = localStorage.getItem('token');
-//         let userId = localStorage.getItem('userId');
-//         let queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-//         axios.get('/orders.json' + queryParams)
-//         .then(res => {
-//             const fetchedOrders = []
-//             for (let key in res.data) {
-//                 fetchedOrders.push({
-//                     ...res.data[key],
-//                     id: key
-//                 });
-//             }
-//             dispatch(fetchOrderSuccess(fetchedOrders))
-//         })
-//         .catch(err => {
-//             console.log(err);
+export const fetchBookings = () => {
+    return dispatch => {
+        let token = localStorage.getItem('token');
+        let userId = localStorage.getItem('userId');
+        let queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        axios.get('/bookings.json' + queryParams)
+        .then(res => {
+            const fetchedBookings = []
+            for (let key in res.data) {
+                fetchedBookings.push({
+                    ...res.data[key],
+                    id: key
+                });
+            }
+            dispatch(fetchBookingSuccess(fetchedBookings))
+        })
+        .catch(err => {
+            console.log(err);
             
-//         })
-//     }
-// }
+        })
+    }
+}

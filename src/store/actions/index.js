@@ -6,7 +6,8 @@ export {
 } from './order';
 
 export {
-    submitBooking
+    submitBooking,
+    fetchBookings
 } from './booking';
 
 export {
