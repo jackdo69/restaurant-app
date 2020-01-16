@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './OrderSummaryItem.module.css'
+import classes from './OrderRemoveItem.module.css'
 
-const OrderSummaryItem = (props) => (
-    <div className={classes.OrderSummaryItem}>
+const OrderRemoveItem = (props) => (
+    <div className={classes.OrderRemoveItem}>
         <div className={classes.item1}>
             $ {props.price}
         </div>
@@ -18,4 +18,4 @@ const OrderSummaryItem = (props) => (
     </div>
 )
 
-export default OrderSummaryItem;
+export default OrderRemoveItem;

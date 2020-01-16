@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import OrderControl from './OrderControl/OrderControl';
-import classes from './OrderControls.module.css';
+import OrderAddItem from './OrderAddItem/OrderAddItem';
+import classes from './OrderAdd.module.css';
 import * as actions from '../../../store/actions/index'
 
-class OrderControls extends Component {
+class OrderAdd extends Component {
     
     render() {
         return (
-            <div className={classes.OrderControls}>
+            <div className={classes.OrderAdd}>
                 {this.props.foods.map(food => (
-                    <OrderControl
+                    <OrderAddItem
                         key={food.id}
                         name={food.name}
                         add={() => this.props.onAddFood(food.name, food.price)} />
@@ -34,4 +34,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderControls);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderAdd);

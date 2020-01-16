@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import OrderSummaryItem from './OrderSummaryItem/OrderSummaryItem';
+import OrderRemoveItem from './OrderRemoveItem/OrderRemoveItem';
 import * as actions from '../../../store/actions/index';
-import classes from './OrderSummary.module.css';
+import classes from './OrderRemove.module.css';
 import Aux from '../../../hoc/Aux/Aux';
 
 
-class OrderSummary extends Component {
+class OrderRemove extends Component {
     render() {
         let orderItem = null;
         let totalPrice = 0;
@@ -16,11 +16,11 @@ class OrderSummary extends Component {
             )
         } else {
             orderItem = (
-                <div className={classes.OrderSummary}>
+                <div className={classes.OrderRemove}>
                     {this.props.foods.map(food => {
                         totalPrice += food.price;
                         return (
-                            <OrderSummaryItem
+                            <OrderRemoveItem
                                 key={food.id}
                                 name={food.name}
                                 price={food.price}
@@ -52,4 +52,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderSummary);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderRemove);

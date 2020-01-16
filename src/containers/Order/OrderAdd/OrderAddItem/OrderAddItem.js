@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './OrderControl.module.css';
+import classes from './OrderAddItem.module.css';
 
-const orderControl = (props) => (
-    <div className={classes.OrderControl}>
+const orderAddItem = (props) => (
+    <div className={classes.OrderAddItem}>
         <div className={classes.item1}>
         <h4>{props.name}</h4>
         </div>
@@ -13,4 +13,4 @@ const orderControl = (props) => (
     </div>
 )
  
-export default orderControl;
+export default orderAddItem;

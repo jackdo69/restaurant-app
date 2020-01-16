@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import OrderControls from './OrderControls/OrderControls';
-import OrderSummary from './OrderSummary/OrderSummary';
+import OrderAdd from './OrderAdd/OrderAdd';
+import OrderRemove from './OrderRemove/OrderRemove';
 import Aux from '../../hoc/Aux/Aux';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -60,8 +60,8 @@ class Order extends Component {
                     <h2 align="center">Order Takeaway</h2>
                     {authRedirect}
                     {orderConfirm}
-                    <OrderSummary />
-                    <OrderControls />
+                    <OrderRemove />
+                    <OrderAdd />
                     <Button
                         disabled={!this.props.foods.length}
                         btnType='Success'
