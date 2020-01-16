@@ -5,8 +5,21 @@
     height: 330px;
     padding: 5px;
 }
+.Food:hover{cursor: pointer;}
 
 .Price {
     float: right;
     font-size: x-small;
+}
+
+.Food img {
+    padding: 5px;
+    width: 100%;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0.9;
+}
+
+.Food img:hover {
+    transform: scale(1.05);
+    opacity: 1;
 }
