@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import classes from './Order.module.css';
-import Button from '../../components/Button/Button'
+import Button from '../../components/Button/Button';
 
 class Order extends Component {
 
@@ -24,8 +24,9 @@ class Order extends Component {
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to={this.props.authRedirectPath} />
         }
+
         return (
-            <Aux>
+            <Aux>         
                 <div className={classes.Order}>
                     <h2 align="center">Order Takeaway</h2>
                     {authRedirect}

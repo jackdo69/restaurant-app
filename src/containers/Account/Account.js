@@ -19,18 +19,26 @@ class Account extends Component {
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to="/auth" />
         }
-        
-        let orders = this.props.orders.map(order => (
-            <OrderItem 
-                key={this.props.orders.indexOf(order)}
-                foods={order.foods} />
-        ))
+        let orders = null
+        if (this.props.orders) {
+            orders = this.props.orders.map(order => (
+                <OrderItem 
+                    key={this.props.orders.indexOf(order)}
+                    foods={order.foods} />
+            ))
+        }
 
-        let bookings = this.props.bookings.map(booking => (
-            <BookingItem 
-                key={this.props.bookings.indexOf(booking)}
-                options={booking.booking}/>
-        ))
+        let bookings = null
+
+        if (this.props.bookings) {
+            bookings = this.props.bookings.map(booking => (
+                <BookingItem 
+                    key={this.props.bookings.indexOf(booking)}
+                    options={booking.booking}/>
+            ))
+        }
+        
+        
 
         return (
             <div className={classes.Account}>

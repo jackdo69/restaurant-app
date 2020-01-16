@@ -27,7 +27,7 @@ class OrderSummary extends Component {
                                 remove={() => this.props.onRemoveFood(food.id)} />
                         )
                     })}
-                    <div>Total: $ {totalPrice}</div>
+                    <div>Total: $ {totalPrice.toFixed(2)}</div>
                 </div>
             )
         }
