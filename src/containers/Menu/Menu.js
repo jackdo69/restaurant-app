@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Food from '../../components/Food/Food'
+import Food from './Food/Food'
 import { connect } from 'react-redux';
-import Slider from '../../components/Slider/Slider';
-import Aux from '../../hoc/Aux/Aux';
 import classes from './Menu.module.css';
 
 class Menu extends Component {
@@ -10,21 +8,22 @@ class Menu extends Component {
     render() {
         return (
 
-        <Aux>
-            <Slider />
-            <div className={classes.Menu}>
-                <div className={classes.Food}>
-                {this.props.foods.map(food => (
-                <Food
-                    imgURL={food.imgURL}
-                    key={food.id}
-                    id={food.id}
-                    name={food.name}
-                    description={food.description} />))}
+           <div className={classes.wrapper}>
+               <h2 >Our menu</h2>
+               <div className={classes.Menu}>
+                    {this.props.foods.map(food => (
+                        <div className={classes.Food}>
+                            <Food
+                                imgURL={food.imgURL}
+                                key={food.id}
+                                id={food.id}
+                                name={food.name}
+                                description={food.description}
+                                price={food.price} />
+                        </div>
+                    ))}
                 </div>
-            
-        </div>
-        </Aux>
+           </div>
         )
     }
 }

@@ -5,16 +5,11 @@ import classes from './Food.module.css';
 class Food extends Component {
     render() {
         return (
-            <div className={classes.Food}>
-                <div className={classes.item1}>
+            <div className={classes.Food}>               
                 <img src={this.props.imgURL} alt='' />
-                </div>
-                <div className={classes.item2}>
-                <h4>{this.props.name}</h4>
-                </div>
-                <div className={classes.item3}>
+                <h4>{this.props.id}. {this.props.name}</h4>
                 <p> {this.props.description}</p>
-                </div>  
+                <div className={classes.Price}>$ {this.props.price}</div>
             </div>
         )
     }

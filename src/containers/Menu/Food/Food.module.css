@@ -1,0 +1,12 @@
+
+.Food {
+    border: 1px solid rgb(235, 232, 232);
+    box-shadow: 2px 2px rgb(235, 232, 232);
+    height: 330px;
+    padding: 5px;
+}
+
+.Price {
+    float: right;
+    font-size: x-small;
+}

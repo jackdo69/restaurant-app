@@ -1,9 +1,19 @@
+.wrapper h2 {text-align: center;}
+
 .Menu {
+    width: 80%;
+    margin: 30px auto;
     border: 1px silver;
-    background-color: snow;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
 }
 
 .Food {
-    width: 80%;
-    margin: 20px auto;
+    border: 1px grey;
+}
+
+.Food img {
+    padding: 5px;
+    width: 100%;
 }

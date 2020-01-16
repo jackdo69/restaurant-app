@@ -34,7 +34,9 @@ class Booking extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    isNumeric: true
+                    isNumeric: true,
+                    minLength: 8,
+                    maxLength: 8
                 },
                 valid: false,
                 touched: false
