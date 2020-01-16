@@ -50,6 +50,13 @@ export const fetchOrderSuccess = (orders) => {
     }
 }
 
+export const clearOrders = () => {
+    console.log('clear order');   
+    return {
+        type: actionTypes.CLEAR_ORDER
+    }
+}
+
 export const fetchOrders = () => {
     return dispatch => {
         let token = localStorage.getItem('token');

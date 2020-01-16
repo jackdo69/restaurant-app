@@ -14,6 +14,9 @@ class Account extends Component {
     }
 
     render() {
+        this.props.onFetchOrders();
+        this.props.onFetchBookings();
+        
         let authRedirect = null;
 
         if (!localStorage.getItem('token')) {

@@ -15,7 +15,7 @@ class Menu extends Component {
                         <img src={this.props.foodDisplay[0].imgURL} alt='' /></div>
                     <div className={classes.Text}>
                         <h3>{this.props.foodDisplay[0].name}</h3> 
-                        
+                        <br />
                         {this.props.foodDisplay[0].description}
                     </div>
 

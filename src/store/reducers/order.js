@@ -30,6 +30,12 @@ const reducer = (state = initialState, action) => {
                 orders: action.orders
             }
 
+        case actionTypes.CLEAR_ORDER:
+            return {
+                ...state,
+                foods: []
+            }
+
         default: return state
     }
 

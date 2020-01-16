@@ -2,7 +2,8 @@ export {
     addFood,
     removeFood,
     submitOrder,
-    fetchOrders
+    fetchOrders,
+    clearOrders
 } from './order';
 
 export {

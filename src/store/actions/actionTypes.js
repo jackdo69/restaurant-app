@@ -4,6 +4,7 @@ export const REMOVE_FOOD = 'REMOVE_FOOD';
 export const ORDER_SUCCESS = 'ORDER_SUCCESS';
 export const ORDER_FAIL = 'ORDER_FAIL';
 export const FETCH_ORDER_SUCCESS = 'FETCH_ORDER_SUCCESS';
+export const CLEAR_ORDER = 'CLEAR_ORDER';
 
 export const BOOKING_SUCCESS = 'BOOKING_SUCCESS';
 export const BOOKING_FAIL = 'BOOKING_FAIL';

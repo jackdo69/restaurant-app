@@ -8,6 +8,7 @@ import * as actions from '../../store/actions/index';
 import classes from './Order.module.css';
 import Button from '../../components/Button/Button';
 
+
 class Order extends Component {
 
     orderHandler = (event) => {
@@ -17,9 +18,16 @@ class Order extends Component {
             userId: this.props.userId
         }
         this.props.onSubmitOrder(order)
+        this.props.history.push('/account');
+        this.props.clearOrder();
     }
 
+    // componentDidUpdate() {
+    //     this.props.clearOrder();
+    // }
+
     render() {
+        
         let authRedirect = null;
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to={this.props.authRedirectPath} />
@@ -33,6 +41,7 @@ class Order extends Component {
                     <OrderSummary />
                     <OrderControls />
                     <Button
+                        disabled={!this.props.foods.length}
                         btnType='Success'
                         click={this.orderHandler}>PLACE ORDER</Button>
                 </div>
@@ -52,7 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitOrder: (orderData) => dispatch(actions.submitOrder(orderData))
+        onSubmitOrder: (orderData) => dispatch(actions.submitOrder(orderData)),
+        clearOrder: () => dispatch(actions.clearOrders())
     }
 }
 
