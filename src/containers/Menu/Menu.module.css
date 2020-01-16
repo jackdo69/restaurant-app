@@ -1,11 +1,32 @@
-.wrapper h2 {text-align: center;}
+.wrapper h2, h3 {text-align: center;}
 
 .Menu {
-    width: 80%;
-    margin: 30px auto;
-    border: 1px silver;
+    width: 75%;
+    margin: 30px auto; 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, 300px);
     grid-gap: 20px;
 }
 
+.Display {
+    width: 70%;
+    margin: 0px auto;
+    border: 1px solid rgb(235, 232, 232);
+    box-shadow: 2px 2px rgb(235, 232, 232);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    /* height: 250px; */
+    grid-gap: 20px;
+}
+
+.Img img{
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(235, 232, 232);;
+}
+
+.Text {
+    padding: 10px;
+    margin-left: 20px;
+}
