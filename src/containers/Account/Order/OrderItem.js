@@ -3,6 +3,7 @@ import classes from './OrderItem.module.css';
 
 class OrderItem extends Component {
     render() {
+        
         let foodOutputs = null
         if (this.props.foods) {
             foodOutputs = (this.props.foods.map(item => (

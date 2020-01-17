@@ -16,9 +16,9 @@ export const removeFood = (index) => {
     }
 };
 
-export const orderSuccess = () => {
+export const newOrderAdded = () => {
     return {
-        type: actionTypes.ORDER_SUCCESS
+        type: actionTypes.NEW_ORDER_ADDED
     }
 }
 
@@ -28,18 +28,25 @@ export const orderFail = () => {
     }
 }
 
+
 export const submitOrder = (order) => {
     return dispatch =>{
         let token = localStorage.getItem('token')
         axios.post('/orders.json?auth=' + token, order)
         .then(res => {
             console.log(res);
-            dispatch(orderSuccess())
+            dispatch(newOrderAdded())
         })
         .catch(err => {
             console.log(err);
             dispatch(orderFail())
         })
+    }
+}
+
+export const fetchOrderStart = () => {
+    return {
+        type:actionTypes.FETCH_ORDER_START
     }
 }
 
@@ -59,6 +66,7 @@ export const clearOrders = () => {
 
 export const fetchOrders = () => {
     return dispatch => {
+        dispatch(fetchOrderStart())
         let token = localStorage.getItem('token');
         let userId = localStorage.getItem('userId');
         let queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';

@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import OrderItem from './Order/OrderItem';
 import BookingItem from './Booking/BookingItem';
+import Spinner from '../../components/Spinner/Spinner';
 
 class Account extends Component {
     
@@ -13,17 +14,22 @@ class Account extends Component {
         this.props.onFetchBookings();
     }
 
-    render() {
+    onOrderAdded = () => {
         this.props.onFetchOrders();
-        this.props.onFetchBookings();
-        
-        let authRedirect = null;
+        this.props.onOrderAdded();
+    }
 
+
+    render() { 
+        if (this.props.orderAdded) {this.onOrderAdded()}
+        let authRedirect = null;
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to="/auth" />
         }
-        let orders = null
-        if (this.props.orders) {
+
+        let orders = <Spinner />
+
+        if (!this.props.ordersLoading) {
             orders = this.props.orders.map(order => (
                 <OrderItem 
                     key={this.props.orders.indexOf(order)}
@@ -31,8 +37,8 @@ class Account extends Component {
             ))
         }
 
-        let bookings = null
-
+        let bookings = null;
+        
         if (this.props.bookings) {
             bookings = this.props.bookings.map(booking => (
                 <BookingItem 
@@ -41,8 +47,6 @@ class Account extends Component {
             ))
         }
         
-        
-
         return (
             <div className={classes.Account}>
                 {authRedirect}
@@ -51,7 +55,7 @@ class Account extends Component {
                 {orders}
                 <p>Your booking:</p>
                 {bookings}
-                
+                <Spinner />
             </div>
 
         );
@@ -61,14 +65,17 @@ class Account extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchOrders: () => dispatch(actions.fetchOrders()),
-        onFetchBookings: () => dispatch(actions.fetchBookings())
+        onFetchBookings: () => dispatch(actions.fetchBookings()),
+        onOrderAdded: () =>dispatch(actions.newOrderAdded())
     }
 }
 
 const mapStateToProps = state => {
     return {
         orders: state.order.orders,
-        bookings: state.booking.bookings
+        bookings: state.booking.bookings,
+        ordersLoading: state.order.loading,
+        orderAdded: state.order.orderAdded
     }
 }
 

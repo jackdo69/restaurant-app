@@ -2,7 +2,9 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     foods: [],
-    orders: []
+    orders: [],
+    loading: false,
+    orderAdded: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,16 +26,30 @@ const reducer = (state = initialState, action) => {
                 foods: state.foods.filter(food => food.id !== action.index)
             }
 
+
+        case actionTypes.FETCH_ORDER_START:
+            return {
+                ...state,
+                loading: true
+            }
+
         case actionTypes.FETCH_ORDER_SUCCESS:
             return {
                 ...state,
-                orders: action.orders
+                orders: action.orders,
+                loading: false
             }
 
         case actionTypes.CLEAR_ORDER:
             return {
                 ...state,
                 foods: []
+            }
+
+        case actionTypes.NEW_ORDER_ADDED:
+            return {
+                ...state,
+                orderAdded: !state.orderAdded
             }
 
         default: return state

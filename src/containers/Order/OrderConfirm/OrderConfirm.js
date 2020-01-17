@@ -12,7 +12,9 @@ class OrderConfirm extends Component {
                 {this.props.foods.map(food => {
                     totalPrice += food.price
                     return (
-                        <div className={classes.row3}>
+                        <div 
+                            key={food.id}
+                            className={classes.row3}>
                             <div>{food.name}</div>
                             <div></div>
                             <div>${food.price}</div>
