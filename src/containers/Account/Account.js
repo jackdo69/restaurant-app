@@ -14,14 +14,20 @@ class Account extends Component {
         this.props.onFetchBookings();
     }
 
-    onOrderAdded = () => {
+    newOrderAdded = () => {
         this.props.onFetchOrders();
         this.props.onOrderAdded();
     }
 
+    newBookingAdded = () => {
+        this.props.onFetchBookings();
+        this.props.onBookingAdded();
+    }
+
 
     render() { 
-        if (this.props.orderAdded) {this.onOrderAdded()}
+        if (this.props.orderAdded) {this.newOrderAdded()}
+        if (this.props.bookingAdded) {this.newBookingAdded()}
         let authRedirect = null;
         if (!localStorage.getItem('token')) {
             authRedirect = <Redirect to="/auth" />
@@ -65,7 +71,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchOrders: () => dispatch(actions.fetchOrders()),
         onFetchBookings: () => dispatch(actions.fetchBookings()),
-        onOrderAdded: () =>dispatch(actions.newOrderAdded())
+        onOrderAdded: () =>dispatch(actions.newOrderAdded()),
+        onBookingAdded: () => dispatch(actions.newBookingAdded())
     }
 }
 
@@ -74,7 +81,8 @@ const mapStateToProps = state => {
         orders: state.order.orders,
         bookings: state.booking.bookings,
         ordersLoading: state.order.loading,
-        orderAdded: state.order.orderAdded
+        orderAdded: state.order.orderAdded,
+        bookingAdded: state.booking.bookingAdded
     }
 }
 

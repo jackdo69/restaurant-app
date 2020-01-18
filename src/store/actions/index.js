@@ -9,7 +9,8 @@ export {
 
 export {
     submitBooking,
-    fetchBookings
+    fetchBookings,
+    newBookingAdded
 } from './booking';
 
 export {

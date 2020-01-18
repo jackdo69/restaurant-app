@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    bookings: []
+    bookings: [],
+    bookingAdded: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -10,7 +11,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 bookings: action.bookings
-            }       
+            } 
+            
+        case actionTypes.NEW_BOOKING_ADDED:
+            return {
+                ...state,
+                bookingAdded: !state.bookingAdded
+            }
         default: return state
     }
 }

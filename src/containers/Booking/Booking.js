@@ -163,6 +163,7 @@ class Booking extends Component {
             userId: localStorage.getItem('userId')
         }
         this.props.onSubmitBooking(booking)
+        this.props.history.push('/account');
     }
 
     onConfirm = (event) => {

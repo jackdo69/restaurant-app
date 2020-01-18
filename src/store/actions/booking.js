@@ -3,9 +3,9 @@ import axios from '../../axios';
 
 
 
-export const bookingSuccess = () => {
+export const newBookingAdded = () => {
     return {
-        type: actionTypes.BOOKING_SUCCESS
+        type: actionTypes.NEW_BOOKING_ADDED
     }
 }
 
@@ -22,7 +22,7 @@ export const submitBooking = (booking) => {
         axios.post('/bookings.json?auth=' + token, booking)
         .then(res => {
             console.log(res);
-            dispatch(bookingSuccess())
+            dispatch(newBookingAdded())
         })
         .catch(err => {
             console.log(err);
