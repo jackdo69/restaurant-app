@@ -57,9 +57,10 @@ class Account extends Component {
             <div className={classes.Account}>
                 {authRedirect}
                 <h2>Welcome back! {localStorage.getItem('userEmail')}</h2>
-                <p>Your orders:</p>
+                <br />
+                <h4>Your orders:</h4>
                 {orders}
-                <p>Your booking:</p>
+                <h4>Your booking:</h4>
                 {bookings}
             </div>
 
