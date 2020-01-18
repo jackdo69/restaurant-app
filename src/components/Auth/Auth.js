@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import { Redirect } from 'react-router-dom';
 import Button from '../Button/Button';
+import Spinner from '../../components/Spinner/Spinner';
 
 class Auth extends Component {
     state = {
@@ -122,6 +123,11 @@ class Auth extends Component {
         if (this.props.isAuthenticated) {
             authRedirect = <Redirect to='/account' />
         }
+        
+        
+        if (this.props.loading) {
+            form = <Spinner />
+        }
 
         return (
             <div className={classes.Auth}>
@@ -151,7 +157,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.token !== null,
+        loading: state.auth.loading
     }
 }
 
