@@ -31,6 +31,12 @@ export const submitBooking = (booking) => {
     }
 }
 
+export const fetchBookingStart = () => {
+    return {
+        type:actionTypes.FETCH_BOOKING_START
+    }
+}
+
 export const fetchBookingSuccess = (bookings) => {
     return {
         type:actionTypes.FETCH_BOOKING_SUCCESS,
@@ -40,6 +46,7 @@ export const fetchBookingSuccess = (bookings) => {
 
 export const fetchBookings = () => {
     return dispatch => {
+        dispatch(fetchBookingStart())
         let token = localStorage.getItem('token');
         let userId = localStorage.getItem('userId');
         let queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';

@@ -45,7 +45,7 @@ class Account extends Component {
 
         let bookings = <Spinner />;
         
-        if (this.props.bookings) {
+        if (!this.props.bookingsLoading) {
             bookings = this.props.bookings.map(booking => (
                 <BookingItem 
                     key={this.props.bookings.indexOf(booking)}
@@ -81,6 +81,7 @@ const mapStateToProps = state => {
         orders: state.order.orders,
         bookings: state.booking.bookings,
         ordersLoading: state.order.loading,
+        bookingsLoading: state.booking.loading,
         orderAdded: state.order.orderAdded,
         bookingAdded: state.booking.bookingAdded
     }
