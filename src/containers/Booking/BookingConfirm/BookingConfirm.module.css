@@ -1,0 +1,11 @@
+.row3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px;
+}
+
+.row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+

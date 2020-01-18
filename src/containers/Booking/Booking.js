@@ -6,6 +6,8 @@ import Input from '../../components/Input/Input';
 import classes from './Booking.module.css';
 import * as actions from '../../store/actions/index';
 import Button from '../../components/Button/Button';
+import Modal from '../../components/Modal/Modal';
+import BookingConfirm from './BookingConfirm/BookingConfirm';
 
 class Booking extends Component {
     state = {
@@ -35,8 +37,8 @@ class Booking extends Component {
                 validation: {
                     required: true,
                     isNumeric: true,
-                    minLength: 8,
-                    maxLength: 8
+                    minLength: 10,
+                    maxLength: 10
                 },
                 valid: false,
                 touched: false
@@ -46,8 +48,6 @@ class Booking extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'number',
-                    min: '1',
-                    max: '15',
                     placeholder: ''
                 },
                 value: '',
@@ -76,41 +76,62 @@ class Booking extends Component {
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        { value: 'yes', displayValue: 'Yes' },
-                        { value: 'no', displayValue: 'No' }
+                        { value: 'no', displayValue: 'No' },
+                        { value: 'yes', displayValue: 'Yes' }
                     ]
                 },
-                value: 'no'
+                value: 'No',
+                validation: {},
+                valid: true,
+                touched: false
             },
             highChair: {
                 label: 'High chair:',
                 elementType: 'select',
                 elementConfig: {
                     options: [
-                        { value: 'yes', displayValue: 'Yes' },
-                        { value: 'no', displayValue: 'No' }
+                        { value: 'no', displayValue: 'No' },
+                        { value: 'yes', displayValue: 'Yes' }
                     ]
                 },
-                value: 'no'
+                value: 'No',
+                validation: {},
+                valid: true,
+                touched: false
             }
         },
-        formIsValid: false
+        formIsValid: false,
+        showModal: false
     }
 
     checkValidity(value, rules) {
         let isValid = true;
-        if (!rules) { return true; }
-        if (rules.required) { isValid = value.trim() !== '' && isValid; }
-        if (rules.minLength) { isValid = value.length >= rules.minLength && isValid }
-        if (rules.maxLength) { isValid = value.length <= rules.maxLength && isValid }
+        if (!rules) {
+            return true;
+        }
+
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid
+        }
+
         if (rules.isEmail) {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test(value) && isValid
         }
+
         if (rules.isNumeric) {
             const pattern = /^\d+$/;
             isValid = pattern.test(value) && isValid
         }
+
         return isValid;
     }
 
@@ -119,14 +140,16 @@ class Booking extends Component {
         const updatedFormElement = { ...updatedBookingForm[inputIdentifier] }
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        
         updatedFormElement.touched = true;
         updatedBookingForm[inputIdentifier] = updatedFormElement;
 
-        let formIsValid = true;
-        for (let inputIdentifier in updatedBookingForm) {
-            formIsValid = updatedBookingForm[inputIdentifier].valid && formIsValid;
-        }
-        this.setState({ bookingForm: updatedBookingForm, formIsValid: formIsValid })
+        let formValidation = true;
+        formValidation = Object.keys(updatedBookingForm).every((key)=>{
+            return updatedBookingForm[key].valid
+        })
+        
+        this.setState({ bookingForm: updatedBookingForm, formIsValid: formValidation })
     }
 
     bookingHandler = (event) => {
@@ -137,16 +160,42 @@ class Booking extends Component {
         }
         const booking = {
             booking: bookingData,
-            userId: this.props.userId
+            userId: localStorage.getItem('userId')
         }
         this.props.onSubmitBooking(booking)
     }
 
-    render() {
-        let authRedirect = null;
+    onConfirm = (event) => {
+        event.preventDefault();
+        this.setState({ showModal: true })  
+        
+        
+    }
 
+    bookingCancel = () => {
+        this.setState({ showModal: false })
+    }
+
+    render() {
+        // console.log(this.state.formIsValid);
+        let bookingConfirm = null;
+        if (this.state.bookingForm.name.value) (
+            bookingConfirm = (
+                <Modal
+                    show={this.state.showModal}
+                    modalClosed={this.bookingCancel}>
+                    <BookingConfirm
+                        details={this.state.bookingForm}
+                        cancel={this.bookingCancel}
+                        proceed={this.bookingHandler} />
+                </Modal>
+            )
+        )
+
+
+        let authRedirect = null;
         if (!localStorage.getItem('token')) {
-            authRedirect = <Redirect to={this.props.authRedirectPath} />
+            authRedirect = <Redirect to='/auth' />
         }
 
         const formElementsArray = [];
@@ -175,7 +224,7 @@ class Booking extends Component {
                 <Button
                     disabled={!this.state.formIsValid}
                     btnType='Success'
-                    click={this.bookingHandler}>MAKE BOOKING</Button>
+                    click={this.onConfirm}>MAKE BOOKING</Button>
             </form>
         )
 
@@ -185,7 +234,7 @@ class Booking extends Component {
                     {authRedirect}
                     <h2>Make a reservation!</h2>
                     {form}
-
+                    {bookingConfirm}
                 </div>
             </Aux>
 
@@ -195,13 +244,6 @@ class Booking extends Component {
 
 
 
-const mapStateToProps = state => {
-    return {
-        authRedirectPath: state.auth.authRedirectPath,
-        userId: state.auth.userId
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return {
         onSubmitBooking: (bookingData) => dispatch(actions.submitBooking(bookingData))
@@ -209,4 +251,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Booking);
+export default connect(null, mapDispatchToProps)(Booking);

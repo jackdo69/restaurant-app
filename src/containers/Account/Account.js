@@ -27,7 +27,7 @@ class Account extends Component {
             authRedirect = <Redirect to="/auth" />
         }
 
-        let orders = <Spinner />
+        let orders = <Spinner />;
 
         if (!this.props.ordersLoading) {
             orders = this.props.orders.map(order => (
@@ -37,7 +37,7 @@ class Account extends Component {
             ))
         }
 
-        let bookings = null;
+        let bookings = <Spinner />;
         
         if (this.props.bookings) {
             bookings = this.props.bookings.map(booking => (
@@ -55,7 +55,6 @@ class Account extends Component {
                 {orders}
                 <p>Your booking:</p>
                 {bookings}
-                <Spinner />
             </div>
 
         );
