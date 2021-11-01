@@ -19,28 +19,27 @@ import booking from './store/reducers/booking';
 //Apply middleware
 import thunk from 'redux-thunk';
 
+
 //hook up devtool
-const composeEnhancers =
-  (window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose) || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  food: food,
-  order: order,
-  auth: auth,
-  booking,
-});
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
+    food: food,
+    order: order,
+    auth: auth,
+    booking
+})
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-);
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+)
+
+
 
 ReactDOM.render(app, document.getElementById('root'));
 
