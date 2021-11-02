@@ -1,15 +1,21 @@
 .Auth {
-    margin: 20px auto;
-    width: 40%;
-    text-align: center;
-    box-shadow: 0 2px 3px #ccc;
-    border: 1px solid #eee;
-    padding: 10px;
-    box-sizing: border-box;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(228, 228, 227);
-    border-radius: 2px;
+  margin: 20px auto;
+  width: 20em;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(228, 228, 227);
+  border-radius: 2px;
+}
+
+@media (max-width: 500px) {
+  .Auth {
+    width: 80%;
+  }
 }
