@@ -1,26 +1,40 @@
-
 .Food {
-    border: 1px solid rgb(235, 232, 232);
-    box-shadow: 2px 2px rgb(235, 232, 232);
-    height: 300px;
-    padding: 5px;
+  border: 1px solid rgb(235, 232, 232);
+  box-shadow: 2px 2px rgb(235, 232, 232);
+  height: 300px;
+  padding: 5px;
 }
-.Food:hover{cursor: pointer;}
+.Food:hover {
+  cursor: pointer;
+}
 
 .Price {
-    float: right;
-    font-size: x-small;
+  float: right;
+  font-size: x-small;
 }
 
 .Food img {
-    padding: 5px;
-    width: 100%;
-    opacity: 0.95;
-    transition: transform 0.7s, opacity 0.7s;
-    
+  padding: 5px;
+  width: 100%;
+  opacity: 0.95;
+  transition: transform 0.7s, opacity 0.7s;
 }
 
 .Food img:hover {
-    transform: scale(1.05);
-    opacity: 1;
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .Food {
+    width: 90%;
+    margin: 20px auto;
+    height: 13em;
+  }
+
+  .ImageContainer {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
 }
